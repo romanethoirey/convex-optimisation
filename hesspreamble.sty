@@ -1,0 +1,127 @@
+\ProvidesPackage{hesspreamble}
+
+\usepackage[a4paper, margin=2.8cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} % Allow special characters
+\usepackage{titling}
+\usepackage{multirow}
+\usepackage{titlesec} % 
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}
+\usepackage{color}
+\usepackage{listings}
+
+% MetaUML
+\usepackage{caption}
+\usepackage{ifpdf,graphicx}
+\ifpdf
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\usepackage{tabu}
+\captionsetup[table]{skip=-10pt} % Fulhack. Det finns en osynlig border runt tables.
+
+\usepackage{enumitem}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{ltablex}
+\usepackage{multirow,array}
+\usepackage{multicol}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath} % Maths
+\usepackage{xfrac} % Nice fractions, but different to pkg ``nicefrac''
+% Remove chapter ``Kapitel 1'' text
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\normalfont\bfseries}{}{0pt}{\Huge}
+    
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{hessGroup}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    %numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+\lstset{
+	literate={ö}{{\"o}}1
+             {ä}{{\"a}}1
+             {å}{{\aa}}1
+             {Ö}{{\"O}}1
+             {Ä}{{\"A}}1
+             {Å}{{\AA}}1
+}
+\lstset{style=hessGroup}
+
+\newcommand{\authors}{
+\addtocounter{table}{-1}
+\begin{table}[H]
+  \begin{tabularx}{\linewidth}{|X|X|X|}
+    \hline
+    \makecell{\textbf{Name}}& \makecell{\textbf{Role}}	    & \makecell{\textbf{Email}}			  \\ \hline
+    ROBIN, Gilles           & Project Leader \& Mathematics & \textit{gilles.robin@efrei.net}	  \\ \hline
+    SEIMANDI, Juliette      & Mathematical Theory           & \textit{juliette.seimandi@efrei.net}\\ \hline
+    STENBERG, William		& Report \& Implementation      & \textit{william.stenberg@efrei.net} \\ \hline
+    THOIREY, Romane         & Python Implementation         & \textit{romane.thoirey@efrei.net}   \\ \hline
+  \end{tabularx}
+\end{table}
+}
+
+\newcommand{\projectidentity}{
+\begin{center}
+    Group \textit{The Hessians}, ST2CXO Convex Optimization\\
+EFREI, M1 Big Data\\
+\end{center}
+  
+\begin{center}
+\textbf{Instructors: }
+
+Leonard BENEDETTI, \textit{leonard.benedetti@platypus.academy},\\
+Djamila BENMERZOUK, \textit{djamila.benmerzouk@intervenants.efrei.net}\\
+
+\end{center}
+}
+
+% Definitions
+%\input{../../templates/definitioner}
+
+
+%So that we can show the title in the footer
+\let\oldtitle\title
+\renewcommand{\title}[1]{\oldtitle{#1}\newcommand{\mythetitle}{#1}}
+
+\newcommand{\documentid}{}
+% Header and footer information
+\fancypagestyle{plain}{
+  \fancyhf{}% Clear header/footer
+  \fancyfoot[R]{The Hessians}% Right footer
+  \fancyfoot[C]{\thepage}
+  \fancyhead[C]{Convex Optimization}
+  \fancyhead[R]{\thedate}
+  \fancyhead[l]{\documentid}
+}
+\pagestyle{plain}% Set page style to plain.
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrulewidth}{1pt}
+
+

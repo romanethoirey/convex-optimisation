@@ -1,0 +1,79 @@
+%        File: convex_optimization.tex
+%
+\documentclass[notitlepage]{article}
+\usepackage{../convex-optimisation/hesspreamble} % Custom, found in preamble.sty
+\usepackage{subfiles}
+\usepackage{ltablex}
+\usepackage{graphicx}
+\keepXColumns % To keep the width of the columns so that it doesn't shrink
+
+\newcommand{\documentdate}{2020-04-10}
+
+\title{Convex Optimization\\}
+\author{The Hessians}
+\date{\documentdate\\Version 0.1} % Or use ``\today'', make sure to increment version number
+
+\begin{document}
+\pagenumbering{roman}
+\maketitle
+\projectidentity
+\authors
+
+\newpage
+\tableofcontents
+
+\newpage
+\listoffigures
+\addcontentsline{toc}{section}{Figures} 
+
+\listoftables
+\addcontentsline{toc}{section}{Tables}
+
+\newpage
+\pagenumbering{arabic}
+%----------------------------------------
+% Start of documents 
+%----------------------------------------
+
+\section{Introduction}
+\subfile{sections/introduction}
+\newpage
+
+\section{Problem Definition}
+TODO: Write
+\newpage
+
+\section{Mathematical Theory}
+TODO: Write
+\newpage
+
+\section{Implementation}
+TODO: Write
+\newpage
+
+\section{Results}
+TODO: Write
+\newpage
+
+\section{Conclusion}
+TODO: Write
+\newpage
+
+\begin{thebibliography}{9}
+	\subsection*{Written sources}
+	\bibitem{example}
+	AuthorName AuthorLastName.
+	\textit{SourceTitle}.
+	PublisherName, 2014.
+	\texttt{ISBN: 9719142094640}.
+	
+	\subsection*{Electronic Sources}
+	\bibitem{electronicExample}
+	\textit{Hessian Matrix}.
+	Wikipedia.
+	\url{https://en.wikipedia.org/wiki/Hessian_Matrix} (Downloaded: 2020-04-10)
+
+\end{thebibliography}
+\addcontentsline{toc}{section}{References}
+
+\end{document}
