@@ -1,0 +1,6 @@
+Compile the LaTeX sources by "pdflatex convex_optimization.tex".
+Subfiles in the sections/ folder cannot be compiled independently, but are used
+for separation of information.
+
+Credit for the preamble and document structure goes to Mattias Salo of Linköping University, Sweden.
+
