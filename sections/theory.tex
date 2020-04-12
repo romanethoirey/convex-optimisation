@@ -1,0 +1,20 @@
+\documentclass[../convex_optimization.tex]{subfiles}
+\begin{document}
+Example of a nice matrix, taken from the Wikipedia article~\cite{hessian_wiki}:
+
+\begin{equation}
+    \mathbf H = \begin{bmatrix}
+        \dfrac{\partial^2 f}{\partial x_1^2} &
+        \dfrac{\partial^2 f}{\partial x_1\,\partial x_2} &
+        \cdots & \dfrac{\partial^2 f}{\partial x_1\,\partial x_n} \\[2.2ex]
+        \dfrac{\partial^2 f}{\partial x_2\,\partial x_1} &
+        \dfrac{\partial^2 f}{\partial x_2^2} & \cdots &
+        \dfrac{\partial^2 f}{\partial x_2\,\partial x_n} \\[2.2ex]
+        \vdots & \vdots & \ddots & \vdots \\[2.2ex]
+        \dfrac{\partial^2 f}{\partial x_n\,\partial x_1} &
+        \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} &
+        \cdots & \dfrac{\partial^2 f}{\partial x_n^2}
+    \end{bmatrix}
+    \label{hessian_definition}
+\end{equation}
+\end{document}
