@@ -1,6 +1,50 @@
 \documentclass[../convex_optimization.tex]{subfiles}
 \begin{document}
-Example of a nice matrix, taken from the Wikipedia article~\cite{hessian_wiki}:
+This chapter will serve to introduce the concept of \ldots
+
+TODO expand
+
+\subsection{Problem formulation}
+A convex optimization problem consists of, given a convex function
+$f: S \to \mathbb R$ for a convex set $S$, finding
+a point $x_0 \in S$ which minimizes the value $f(x_0) \in \mathbb R$.
+
+Recall the definitions for convex sets and functions:
+A set $S \subset \mathbb R^n$ is a \textbf{convex set} iff
+\begin{equation}
+    \forall (x, y) \in S^2: (1-\lambda)x + \lambda y \in S,
+    \forall \lambda \in [0, 1]
+    \label{convex_set}
+\end{equation}
+interpreted as any point on the line segment between two points in the set,
+is also in the set.
+A function $f$ is a \textbf{convex function on $S$} iff
+\begin{equation}
+    \forall (x, y) \in S^2, \forall \lambda \in [0, 1]:
+    f((1-\lambda)x + \lambda y) \leq (1-\lambda)f(x) + \lambda f(y)
+    \label{convex_function}
+\end{equation}
+thus the function value of a point between two contained points must
+not exceed the value over the same point in the linear combination between the two contained points.
+
+We will also recall that for a function of one variable,
+twice differentiable on an interval $I$,
+the function being \textbf{convex} is equivalent to its second derivative
+being positive:
+TODO: Check if this is mathematically sound
+\begin{equation} \label{convex_corollary}
+\begin{gathered}
+    \text{For } f: \mathbb R \to \mathbb R
+    \text{ with }\hat{f}: I \to \mathbb R \in C^2, \\
+    f \textbf{ convex} \iff f''(x) \geq 0, x \in I
+\end{gathered}
+\end{equation}
+When solving classical convex first-order or zero-order convex
+optimization problems, these definition alone provide the solution.
+For problems of second order or higher, these properties alone are
+no longer sufficient.
+\newpage
+taken from the Wikipedia article~\cite{hessian_wiki}:
 
 \begin{equation}
     \mathbf H = \begin{bmatrix}
