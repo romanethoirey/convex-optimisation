@@ -95,7 +95,7 @@ a local minimum is known to be a global minimum:
     \text{If $f$ is \textbf{strictly convex} and $x^*$ is a minimum,
     it is the \underline{only} global minimum.}
 \end{gather}
-\subsection{Theoretical example of convex optimization}
+\subsection{Theoretical examples of convex optimization}
 Consider the case of unconstrained optimization of a 1-variable function.
 We take the case of a function $f$ that is convex on a convex set $S$
 with only one variable that we minimize without constraint:
@@ -103,7 +103,7 @@ with only one variable that we minimize without constraint:
     \text{Objective: } &\quad\xi\colon \min_{x} \quad f(x)
     \nonumber\\
     \text{1:st order condition:} &\quad
-    \text{If $x^*$ is a solution that minimizes $\xi$,
+    \text{If $x^*$ is a solution to $\xi$,
     then it must hold that $f'(x^*) = 0$}\label{firstcond}\\
     \text{2:nd order condition:} &\quad
     \text{Assume there exists a $x^*$ which verifies (\ref{firstcond}), then:}
@@ -117,6 +117,43 @@ with only one variable that we minimize without constraint:
     \text{As $f$ is convex, } \forall x \in S, f''(x) \geq 0
     \Rightarrow x^* \text{ is a global minimum}\nonumber
 \end{align}
+
+Moving on to the case of a multivariate convex function.
+Let $f$ be a convex function of $n$ variables defined on $S$.
+We consider a minimization program:
+\begin{align}
+    \text{Objective:} &\quad\xi\colon \min_{x_1,\ldots,x_n}
+    \quad f(x_1, \ldots, x_n)
+    \nonumber\\
+    \text{1:st order condition:} &\quad
+    \text{If $\vec{x}^*=(x_1^*, \ldots, x_n^*)^T$ is a solution to $\xi$,
+    then it must hold that }
+    \nonumber\\& \qquad \qquad \quad
+    \begin{aligned}
+        \frac{\partial f(\vec{x}^*)}{\partial x_i} = 0\label{multifirst}
+        \quad \forall i=1,\ldots , n
+    \end{aligned}\\
+    \text{2:nd order condition:} &\quad
+    \text{Assume there exists a $\vec{x}^*$ which verifies (\ref{multifirst}), then:}
+    \nonumber\\ & \qquad
+    \begin{aligned}
+        \mathbf H(\vec{x}^*) \text{ is \textbf{positive definite}}
+        &\Rightarrow & \vec{x}^*\text{ is a local minimum}\\
+        \mathbf H(\vec{x}^*) \text{ is \textbf{negative definite}}
+        &\Rightarrow & \vec{x}^*\text{ is a local minimum}\\
+        f''(x^*) > 0 &\Rightarrow & x^* \text{ is a local maximum}
+    \end{aligned}\\
+    &\quad
+    \text{As $f$ is convex, if the hessian is positive semidefinite for
+any $\vec{z}$}\nonumber \\ & \quad
+    \text{the found local minimum $\vec{x}^*$ is global:}
+    \nonumber\\ & \qquad
+    \begin{aligned}
+        \mathbf H(\vec{z}) \text{ positive semidefinite } \forall \vec{z}
+        & \Rightarrow & \vec{x}^*\text{ is a global minimum}
+    \end{aligned}
+\end{align}
+
 
 
 \newpage
