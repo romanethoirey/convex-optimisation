@@ -31,21 +31,23 @@ We will also recall that for a function of one variable,
 twice differentiable on an interval $I$,
 the function being \textbf{convex} is equivalent to its second derivative
 being positive:
-TODO: Check if this is mathematically sound
 \begin{equation} \label{convex_corollary}
 \begin{gathered}
     \text{For } f: \mathbb R \to \mathbb R
-    \text{ with }\hat{f}: I \to \mathbb R \in C^2, \\
-    f \textbf{ convex} \iff f''(x) \geq 0, x \in I
+    \text{ with $f$ twice differentiable on the interval $I$}, \\
+    f \textbf{ convex on $I$} \iff f''(x) \geq 0, x \in I
 \end{gathered}
 \end{equation}
 When solving classical convex first-order or zero-order convex
 optimization problems, these definition alone provide the solution.
 For problems of second order or higher, these properties alone are
 no longer sufficient.
-\newpage
-taken from the Wikipedia article~\cite{hessian_wiki}:
 
+\subsection{Matrix definition}
+Assuming the existence of the second derivative, we introduce
+the Hessian matrix as a mathematical object. We will use this
+to solve second order convex optimization problems.
+We define the Hessian matrix:
 \begin{equation}
     \mathbf H = \begin{bmatrix}
         \dfrac{\partial^2 f}{\partial x_1^2} &
@@ -61,4 +63,25 @@ taken from the Wikipedia article~\cite{hessian_wiki}:
     \end{bmatrix}
     \label{hessian_definition}
 \end{equation}
+
+This matrix of second derivatives can also be used as a linear
+operator evaluated at a point $\vec{v}=(x_1, \ldots, x_n)^T$,
+with $\mathbf H(\vec{v})$.
+
+In the case of multivariate functions, the convexity of a function
+implies properties of the Hessian and vice versa, which
+helps to solve optimization problems:
+\begin{gather}
+    \text{For } f: S \subseteq \mathbb R^n \to \mathbb R,
+    \text{C \textbf{convex} and open set and } f \in C^2,
+    \text{ then}\nonumber\\
+    f \text{ \textbf{convex} on }S \iff
+    \mathbf H \text{ is \textbf{positive semidefinite} } \forall x \in C\label{hessian_convex}\\
+    \text{and}\nonumber\\
+    f \text{ \textbf{strictly convex} on S} \iff
+    \mathbf H \text{ is \textbf{positive definite} } \forall x \in C
+\end{gather}
+
+\newpage
+
 \end{document}
