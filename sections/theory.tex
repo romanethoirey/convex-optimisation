@@ -35,7 +35,7 @@ being positive:
 \begin{gathered}
     \text{For } f: \mathbb R \to \mathbb R
     \text{ with $f$ twice differentiable on the interval $I$}, \\
-    f \textbf{ convex on $I$} \iff f''(x) \geq 0, x \in I
+f \textbf{ convex}\text{ on } I \iff f''(x) \geq 0, x \in I
 \end{gathered}
 \end{equation}
 When solving classical convex first-order or zero-order convex
@@ -76,11 +76,48 @@ helps to solve optimization problems:
     \text{C \textbf{convex} and open set and } f \in C^2,
     \text{ then}\nonumber\\
     f \text{ \textbf{convex} on }S \iff
-    \mathbf H \text{ is \textbf{positive semidefinite} } \forall x \in C\label{hessian_convex}\\
+    \mathbf H \text{ is \textbf{positive semidefinite} } \forall x \in S\label{hessian_convex}\\
     \text{and}\nonumber\\
     f \text{ \textbf{strictly convex} on S} \iff
-    \mathbf H \text{ is \textbf{positive definite} } \forall x \in C
+    \mathbf H \text{ is \textbf{positive definite} } \forall x \in S
 \end{gather}
+
+Convexity is very important in optimization theory because it provides
+additional properties that help to minimze more easily or quickly,
+especially in $\mathbb R^n$. For example, with a convex function
+a local minimum is known to be a global minimum:
+\begin{gather}
+    \text{For } f: S \subseteq \mathbb R^n \to \mathbb R,
+    \text{C \textbf{convex} and open set and $f$ \textbf{convex} on S:}
+    \nonumber\\
+    \text{If } x^* \in S \text{ is a local minimum to $f$, } 
+    x^* \text{ is also a global minimum to $f$.}\\
+    \text{If $f$ is \textbf{strictly convex} and $x^*$ is a minimum,
+    it is the \underline{only} global minimum.}
+\end{gather}
+\subsection{Theoretical example of convex optimization}
+Consider the case of unconstrained optimization of a 1-variable function.
+We take the case of a function $f$ that is convex on a convex set $S$
+with only one variable that we minimize without constraint:
+\begin{align}
+    \text{Objective: } &\quad\xi\colon \min_{x} \quad f(x)
+    \nonumber\\
+    \text{1:st order condition:} &\quad
+    \text{If $x^*$ is a solution that minimizes $\xi$,
+    then it must hold that $f'(x^*) = 0$}\label{firstcond}\\
+    \text{2:nd order condition:} &\quad
+    \text{Assume there exists a $x^*$ which verifies (\ref{firstcond}), then:}
+    \nonumber\\& \qquad
+    \begin{aligned}
+        f''(x^*) > 0 &\Rightarrow & x^* \text{ is a local minimum}\\
+        x^* \text{ local minimum} & \Rightarrow & f''(x^*) \geq 0\\
+        x^* \text{ local maximum} & \Rightarrow & f''(x^*) \leq 0
+    \end{aligned}\\
+    &\quad
+    \text{As $f$ is convex, } \forall x \in S, f''(x) \geq 0
+    \Rightarrow x^* \text{ is a global minimum}\nonumber
+\end{align}
+
 
 \newpage
 
