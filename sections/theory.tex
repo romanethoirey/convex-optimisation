@@ -1,4 +1,6 @@
 \documentclass[../convex_optimization.tex]{subfiles}
+\theoremstyle{definition} \newtheorem{defi}{Def}
+\theoremstyle{definition} \newtheorem{prop}{Prop}
 \begin{document}
 This chapter will serve to introduce the concept of \ldots
 
@@ -27,8 +29,9 @@ A function $f$ is a \textbf{convex function on $S$} iff
 thus the function value of a point between two contained points must
 not exceed the value over the same point in the linear combination between the two contained points.
 
-We will also recall that for a function of one variable,
-twice differentiable on an interval $I$,
+We will also recall a corollary for the case $n=1$ 
+that for a function of one variable,
+twice differentiable on an interval $I$ of $\mathbf R$,
 the function being \textbf{convex} is equivalent to its second derivative
 being positive:
 \begin{equation} \label{convex_corollary}
@@ -48,6 +51,7 @@ Assuming the existence of the second derivative, we introduce
 the Hessian matrix as a mathematical object. We will use this
 to solve second order convex optimization problems.
 We define the Hessian matrix:
+\begin{defi}
 \begin{equation}
     \mathbf H = \begin{bmatrix}
         \dfrac{\partial^2 f}{\partial x_1^2} &
@@ -61,8 +65,10 @@ We define the Hessian matrix:
         \dfrac{\partial^2 f}{\partial x_n\,\partial x_2} &
         \cdots & \dfrac{\partial^2 f}{\partial x_n^2}
     \end{bmatrix}
-    \label{hessian_definition}
+    \label{hessian_matrix_definition}
 \end{equation}
+    \label{hessian_definition}
+\end{defi}
 
 This matrix of second derivatives can also be used as a linear
 operator evaluated at a point $\vec{v}=(x_1, \ldots, x_n)^T$,
@@ -71,6 +77,7 @@ with $\mathbf H(\vec{v})$.
 In the case of multivariate functions, the convexity of a function
 implies properties of the Hessian and vice versa, which
 helps to solve optimization problems:
+\begin{prop}
 \begin{gather}
     \text{For } f: S \subseteq \mathbb R^n \to \mathbb R,
     \text{C \textbf{convex} and open set and } f \in C^2,
@@ -80,7 +87,39 @@ helps to solve optimization problems:
     \text{and}\nonumber\\
     f \text{ \textbf{strictly convex} on S} \iff
     \mathbf H \text{ is \textbf{positive definite} } \forall x \in S
+    \label{positive_definite}
 \end{gather}
+\end{prop}
+\begin{defi}
+\begin{gather}
+    \text{A matrix $A$ is called \textbf{positive definite} if:}
+    \nonumber\\
+    \forall \vec{v} \neq 
+    \begin{pmatrix} 0 \\ \vdots \\ 0
+    \end{pmatrix}\colon
+    \rlap{\ensuremath{\underbrace{\phantom{
+                    {\aunderbrace[D]{\vec{v}}_{1\times n}}^T
+                    \aunderbrace[D]{A}_{n\times n}
+                    \aunderbrace[D]{\vec{v}}_{n\times 1}
+    }}_{\in \mathbb R}}}
+    {\aunderbrace[D]{\vec{v}}_{1\times n}}^T
+    \aunderbrace[D]{A}_{n\times n}
+    \aunderbrace[D]{\vec{v}}_{n\times 1}
+    > 0
+\end{gather}
+\end{defi}
+Similarly, a positive semidefinite matrix can be defined by relaxing the inequality in (\ref{positive_definite}):
+\begin{defi}
+\begin{gather}
+    \text{A matrix $A$ is called \textbf{positive semidefinite} if:}
+    \nonumber\\
+    \forall \vec{v} \neq 
+    \begin{pmatrix} 0 \\ \vdots \\ 0
+    \end{pmatrix}\colon
+    \vec{v}^T\space A\space \vec{v} \geq 0
+\end{gather}
+\end{defi}
+
 
 Convexity is very important in optimization theory because it provides
 additional properties that help to minimze more easily or quickly,
@@ -88,19 +127,19 @@ especially in $\mathbb R^n$. For example, with a convex function
 a local minimum is known to be a global minimum:
 \begin{gather}
     \text{For } f: S \subseteq \mathbb R^n \to \mathbb R,
-    \text{C \textbf{convex} and open set and $f$ \textbf{convex} on S:}
+    \text{ $f$ convex on a convex set S:}
     \nonumber\\
     \text{If } x^* \in S \text{ is a local minimum to $f$, } 
     x^* \text{ is also a global minimum to $f$.}\\
     \text{If $f$ is \textbf{strictly convex} and $x^*$ is a minimum,
     it is the \underline{only} global minimum.}
 \end{gather}
-\subsection{Theoretical examples of convex optimization}
+\subsection{Convex Optimization}
 Consider the case of unconstrained optimization of a 1-variable function.
 We take the case of a function $f$ that is convex on a convex set $S$
 with only one variable that we minimize without constraint:
 \begin{align}
-    \text{Objective: } &\quad\xi\colon \min_{x} \quad f(x)
+    \text{Objective: } &\quad\xi\colon \min_{x\in\mathbb R} \quad f(x)
     \nonumber\\
     \text{1:st order condition:} &\quad
     \text{If $x^*$ is a solution to $\xi$,
@@ -114,12 +153,12 @@ with only one variable that we minimize without constraint:
         x^* \text{ local maximum} & \Rightarrow & f''(x^*) \leq 0
     \end{aligned}\\
     &\quad
-    \text{As $f$ is convex, } \forall x \in S, f''(x) \geq 0
+    \text{As $f$ is convex, } \forall x \in\mathbb R, f''(x) \geq 0
     \Rightarrow x^* \text{ is a global minimum}\nonumber
 \end{align}
 
 Moving on to the case of a multivariate convex function.
-Let $f$ be a convex function of $n$ variables defined on $S$.
+Let $f$ be a convex function of $n$ variables defined on $\mathbb R^n$.
 We consider a minimization program:
 \begin{align}
     \text{Objective:} &\quad\xi\colon \min_{x_1,\ldots,x_n}
