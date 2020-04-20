@@ -2,14 +2,13 @@
 \theoremstyle{definition} \newtheorem{defi}{Def}
 \theoremstyle{definition} \newtheorem{prop}{Prop}
 \begin{document}
-This chapter will serve to introduce the concept of \ldots
-
-TODO expand
+This chapter will serve to introduce the mathematical foundation used in
+convex optimization using the Hessian matrix.
 
 \subsection{Problem formulation}
 A convex optimization problem consists of, given a convex function
 $f: S \to \mathbb R$ for a convex set $S$, finding
-a point $x_0 \in S$ which minimizes the value $f(x_0) \in \mathbb R$.
+a point $x_0 \in S$ which minimizes the value $f(x_0) \in \mathbb R$~\ref{toulouse}.
 
 Recall the definitions for convex sets and functions:
 A set $S \subset \mathbb R^n$ is a \textbf{convex set} iff
@@ -76,7 +75,7 @@ with $\mathbf H(\vec{v})$.
 
 In the case of multivariate functions, the convexity of a function
 implies properties of the Hessian and vice versa, which
-helps to solve optimization problems:
+helps to solve optimization problems~\ref{bordeaux}:
 \begin{prop}
 \begin{gather}
     \text{For } f: S \subseteq \mathbb R^n \to \mathbb R,
@@ -193,8 +192,22 @@ any $\vec{z}$}\nonumber \\ & \quad
     \end{aligned}
 \end{align}
 
-
-
-\newpage
+To find out if $\mathbf H(\vec{z})$ is (at least) positive semidefinite,
+we have two possibilities:
+\begin{enumerate}
+    \item Calculate the eigenvalues of the matrix and study their posititivity:
+        \begin{equation}
+            \lambda_i > 0 \quad \forall i \Rightarrow \mathbf H \text{ positive definite}
+            \label{eigenpos}
+        \end{equation}
+    \item Calculate the lower bound of the matrix and study its posititivity:
+        \begin{equation}
+            m_i > 0 \quad \forall i \Rightarrow \mathbf H \text{ positive definite}
+        \end{equation}
+\end{enumerate}
+In the next chapter, we will use a method similar to (\ref{eigenpos}).
+If the determinant of the Hessian is positive, we compute its
+\underline{trace} by summing the eigenvalues, and say that a solution
+is a minimum if the trace is positive, and a maximum if the trace is negative.
 
 \end{document}

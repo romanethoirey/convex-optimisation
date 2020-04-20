@@ -1,17 +1,23 @@
 \documentclass[../convex_optimization.tex]{subfiles}
 \begin{document}
-Contents of the introduction chapter, below we see a picture of German
-mathematician Ludwig Otto Hesse (born in 1811):
+This report will show how to use the Hessian matrix to determine if solutions
+to an optimization problem are optimal. 
+We will introduce the relevant mathematical theory, a concrete case study of
+two functions, and then provide details of a Python implementation that performs
+a version of steepest-descent, validating the solutions using the Hessian methods.
 
+As a small introductory background, below we see a picture of German
+mathematician Ludwig Otto Hesse (born in 1811):
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.5\linewidth]{figures/ludwig_otto_hesse.jpg}
-        \caption{Ludwig Otto Hesse, approx. 1860}
+        \caption{Ludwig Otto Hesse, approx. 1860. Image courtesy of Wikimedia Commons}
         \label{fig:hesse_picture}
     \end{center}
 \end{figure}
-Hesse has given name to the Hessian Matrix, which will be the subject of study
+Hesse has given name to the Hessian matrix, which will be the subject of study
 in this report~\cite{hessian_wiki}.
-
+The report is finished by a section which compares the
+case study with the implementation results.
 
 \end{document}
