@@ -1,0 +1,170 @@
+\documentclass[../convex_optimization.tex]{subfiles}
+\newcommand{\Z}{\mathbb{Z}}
+\begin{document}
+We will consider two cases, two different functions $f$.
+\subsection{First study}
+Consider the function as given by (\ref{firstfunc}):
+\begin{equation}
+    f(x, y)=e^{x-y} (x^2 - 2y^2)
+    \label{firstfunc}
+\end{equation}
+First  we will calculate the gradient of $f$:
+\begin{equation}
+    \nabla f(x,y) = 
+    \begin{bmatrix}
+    e^{x-y} (x^2 - 2y^2 + 2x) \\
+    e^{x-y} (-x^2 + 2y^2 - 4y)
+    \end{bmatrix}
+    \label{firstgrad}
+\end{equation}
+Since the exponential is strictly positive, we can determine the critical points by solving the following system:
+\begin{equation}
+    \systeme{0 = x^2 - 2y^2 + 2x,0 = -x^2 + 2y^2 - 4y}
+    \label{firstsystem}
+\end{equation}
+
+
+This system is easy to solve and we find  the following critical points :
+$p_0 = (0, 0)$, $p_1 = (-4, -2)$.
+Now we will calculate the partial derivatives and the Hessian matrix
+in order to evaluate it on the critical points
+\begin{align}
+\frac{\partial f}{\partial x^2} &= e^{x-y} (x^2- 2y^2 + 4x + 2)\nonumber\\
+\frac{\partial f}{\partial y^2} &=  e^{x-y} (x^2- 2y^2 + 8y - 4)\nonumber\\
+\frac{\partial f}{\partial x \partial y } &= e^{x-y} (-x^2 +2y^2 - 2x - 4y)\nonumber
+\end{align}
+So by (\ref{hessian_definition}) and using that in this case
+$\frac{\partial f}{\partial x \partial y }=\frac{\partial f}{\partial y \partial x }$, 
+we have:
+\begin{equation}
+    \mathbf H_f(x,y) =\begin{pmatrix}
+        e^{x-y} (x^2- 2y^2 + 4x + 2) &   e^{x-y} (-x^2 +2y^2 - 2x - 4y) \\
+        e^{x-y} (-x^2 +2y^2 - 2x - 4y) & e^{x-y} (x^2- 2y^2 + 8y - 4)
+    \end{pmatrix}
+    \label{firsthessian}
+\end{equation}
+We can now determine for each critical point what type it is; maximum, minimum, or saddle.
+\begin{enumerate}
+\item $p_0$
+    \begin{gather}
+        \mathbf H_f(0,0) =
+        \begin{pmatrix}
+            2  & 0\\
+            0 & -4
+        \end{pmatrix}\nonumber\\
+        \begin{vmatrix}
+            2  & 0\\
+            0 & -4
+        \end{vmatrix} = - 8 < 0
+        \nonumber
+    \end{gather}
+
+Since the determinant of the hessian matrix is negative,
+its eigenvalues are not zero.
+One being positive and the other one being negative means that the matrix
+is neither definite positive nor definite negative
+(by (\ref{positive_definite})).
+We can then conclude that $p_0$ is a saddle point.
+\item $p_1$
+    \begin{gather}
+        \mathbf H_f(-4,-2) =
+        \begin{pmatrix}
+            -6e^{ -2}  & 8e^{ -2}\\
+            8e^{ -2} & -12e^{ -2}
+        \end{pmatrix}\nonumber\\
+        \begin{vmatrix}
+            -6e^{ -2}  & 8e^{ -2}\\
+            8e^{ -2} & -12e^{ -2}
+        \end{vmatrix} =  8e^{ -4} > 0
+        \nonumber
+    \end{gather}
+
+Then we calculate its trace :
+\end{enumerate}
+\begin{equation}
+    Tr(\mathbf H_f(-4,-2)) = -18e^ {-2 }<0 
+    \nonumber
+\end{equation}
+Since the determinant is positive and the trace is negative we know that
+both the eigenvalues are negative which means that
+$p_1$ is a maximum of $f$.
+
+
+\subsection{Second case}
+For this next case, we will use a different $f$:
+\begin{equation}
+    f(x, y )=x^2 - \cos(y)
+\end{equation}
+First  we will calculate the gradient of $f$:
+\begin{equation}
+\nabla f(x,y) = 
+\begin{bmatrix}
+    2x \\ \sin(x)
+\end{bmatrix}
+\end{equation}
+We can determine the critical points by solving the following system:
+\begin{equation}
+    \systeme{0 = 2x,0 = \sin(x)}
+    \label{sinsys}
+\end{equation}
+By (\ref{sinsys}) we get the critical points
+$p_k = (0, k\pi), \forall k \in \Z$
+
+We can calculate the partial derivatives and the Hessian matrix similar to before:
+\begin{align}
+   \frac{\partial f}{\partial x^2} &= 2\nonumber & \quad
+   \frac{\partial f}{\partial y^2} &= \cos(y)\nonumber & \quad
+\frac{\partial f}{\partial x \partial y } &= 0 \nonumber 
+\end{align}
+And by 
+$\frac{\partial f}{\partial x \partial y }=\frac{\partial f}{\partial y \partial x }$, we get
+\begin{equation}
+   \mathbf H_f(x,y) =\begin{pmatrix}
+       2  & 0\\
+       0 & \cos(y)
+   \end{pmatrix}
+\end{equation}
+
+We can now study 2 cases for the evaluation of the Hessian matrix, $k$ even and $k$ odd.
+\begin{equation}
+    \mathbf H_f(0, k\pi) =\begin{pmatrix}
+        2  & 0\\
+        0 & \cos(k\pi)
+    \end{pmatrix}\nonumber
+\end{equation}
+
+\begin{enumerate}
+    \item $k\text{ even} \iff k=2n, n\in \mathbb Z \Rightarrow \cos(k\pi) = 1$
+        \begin{equation}
+            \det{(\mathbf H_f(0, 2n\pi))}=
+            \begin{vmatrix}
+                2  & 0\\
+                0 &1
+            \end{vmatrix} = 2>0\nonumber
+        \end{equation}
+
+We then have the eigenvalues of the same sign. 
+\begin{equation}
+    Tr(\mathbf H_f(0,k\pi)) = 3>0 \nonumber
+\end{equation}
+Then \(p_k\) is a minimum for $f$.
+
+    \item $k\text{ odd} \iff k=2n+1, n\in \mathbb Z \Rightarrow \cos(k\pi) = -1$
+\end{enumerate}
+\begin{equation}
+    \det{(\mathbf H_f(0, (2n+1)\pi))}=
+    \begin{vmatrix}
+        2  & 0\\
+        0 & -1
+    \end{vmatrix} = -2<0\nonumber
+\end{equation}
+Since the determinant of the Hessian is negative, its eigenvalues are not zero.
+One being positive and the other one being negative means that the matrix is
+neither definite positive or definite negative. We conclude that $p_k$ is a saddle point.
+
+To conclude :
+\begin{itemize}
+    \item If $k$ is even then $p_k$ is a minimum for $f$
+    \item If $k$ is odd then $p_k$ is a saddle point for $f$
+\end{itemize}
+\end{document}
