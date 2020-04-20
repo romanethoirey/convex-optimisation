@@ -1,0 +1,27 @@
+\documentclass[../convex_optimization.tex]{subfiles}
+\begin{document}
+The implementation follows the theoretical definition, and gives examples
+for the same cases as in the case study.
+Unsurprisingly, the same results are achieved, though the case study
+used analytical methods to find the exact critical points while
+the gradient descent method last in the implementation uses
+numerical methods to come close.
+
+The Hessian definition from the theory chapter and the determinant-trace
+method of determining the character of critical points is useful in the
+implementation to verify the optimization. There are other methods,
+as discussed in the theory there are several methods to determine if a
+matrix if positive definite. The choice to use eigenvalues (and by it,
+the trace of the matrix) was helpful because of the ease of use in the
+implementation: The SymPy library has many functions pre-build, among
+them methods to derivate and find eigenvalues~\cite{sympy}.
+
+While the examples demonstrated in this report are mostly functions of
+two variables, and otherwise only one, these solutions do generalize 
+to higher dimensions. The computational complexity increases however with
+the dimensions, as the Hessian space complexity is exponential~\cite{hessian_wiki}.
+In fact, higher-dimensional problems (notably neural nets) often choose
+to approximate the Hessian in conjunction with Newton-like methods.
+The examples provided in this report have however shown the theoretical
+applicability of the Hessian as a tool for solving convex optimization problems.
+\end{document}
